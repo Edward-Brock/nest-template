@@ -16,6 +16,10 @@ Nest Template 是在 Nest 框架基础上添加相关依赖及功能，扩展 Ne
 ## 支持功能
 
 - Nest Config
+- 跨源资源共享功能（CORS）
+- 全局日志记录（使用 Winston）
+- 数据库（使用 TypeORM）
+- 全局中间件、全局异常过滤器、全局响应拦截器
 
 ## 安装
 

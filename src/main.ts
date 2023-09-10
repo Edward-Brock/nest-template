@@ -4,6 +4,8 @@ import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  // 启用跨源资源共享（CORS）
+  app.enableCors();
   // 引入 Nest ConfigService
   const configService: ConfigService = app.get<ConfigService>(ConfigService);
   // 动态获取 HTTP 服务端口
