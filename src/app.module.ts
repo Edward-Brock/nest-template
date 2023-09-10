@@ -17,6 +17,7 @@ import UnifyExceptionFilter from './middleware/filter/uinify-exception.filter';
 import { UnifyResponseInterceptor } from './middleware/interceptor/unify-response.interceptor';
 import logger from './middleware/logger/logger.middleware';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { HealthModule } from './module/health/health.module';
 
 @Module({
   imports: [
@@ -101,6 +102,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
         autoLoadEntities: true,
       }),
     }),
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [
