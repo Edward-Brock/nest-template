@@ -13,6 +13,10 @@ Nest Template 是在 Nest 框架基础上添加相关依赖及功能，扩展 Ne
 项目采用基于 [TypeScript](https://www.typescriptlang.org/) 语言入门的 [Nest](https://github.com/nestjs/nest)
 框架存储库，使用 [pnpm](https://pnpm.io/) 作为包管理工具。
 
+## 支持功能
+
+- Nest Config
+
 ## 安装
 
 ```bash
@@ -20,6 +24,9 @@ $ pnpm install
 ```
 
 ## 运行
+
+项目使用环境变量对相关配置进行管理，运行项目之前，你需要在 `env` 文件夹中分别新建 `.env`、`.env.development`
+及 `.env.production` 文件，环境变量内的相关配置可以参考 `.env.example` 内的文件内容。
 
 ```bash
 # development
