@@ -16,6 +16,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import UnifyExceptionFilter from './middleware/filter/uinify-exception.filter';
 import { UnifyResponseInterceptor } from './middleware/interceptor/unify-response.interceptor';
 import logger from './middleware/logger/logger.middleware';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
@@ -70,6 +71,17 @@ import logger from './middleware/logger/logger.middleware';
             winston.format.json(),
           ),
         }),
+      ],
+    }),
+    // Rate limiting 速率限制配置
+    ThrottlerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => [
+        {
+          ttl: config.get('THROTTLE_TTL'),
+          limit: config.get('THROTTLE_LIMIT'),
+        },
       ],
     }),
     // TypeORM 配置
