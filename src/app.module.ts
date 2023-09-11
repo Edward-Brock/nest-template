@@ -18,6 +18,7 @@ import { UnifyResponseInterceptor } from './middleware/interceptor/unify-respons
 import logger from './middleware/logger/logger.middleware';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { HealthModule } from './module/health/health.module';
+import { UserModule } from './module/user/user.module';
 
 @Module({
   imports: [
@@ -98,11 +99,12 @@ import { HealthModule } from './module/health/health.module';
         database: configService.get('DB_DATABASE', 'database'), // 数据库名
         timezone: '+08:00', // 服务器上配置的时区
         synchronize: true, // 根据实体自动创建数据库表，生产环境建议关闭
-        entities: ['dist/**/*.entity{.ts,.js}'], // 数据表实体
+        // entities: ['dist/**/*.entity{.ts, .d.ts, .js}'], // 数据表实体
         autoLoadEntities: true,
       }),
     }),
     HealthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
