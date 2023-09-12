@@ -16,6 +16,7 @@ async function bootstrap() {
     .setTitle('Nest Template')
     .setDescription('这是 Nest Template API 文档')
     .setVersion('0.0.1')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-doc', app, document);

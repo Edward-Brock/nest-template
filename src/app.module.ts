@@ -19,6 +19,7 @@ import logger from './middleware/logger/logger.middleware';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { HealthModule } from './module/health/health.module';
 import { UserModule } from './module/user/user.module';
+import { AuthModule } from './module/auth/auth.module';
 
 @Module({
   imports: [
@@ -107,6 +108,7 @@ import { UserModule } from './module/user/user.module';
     }),
     HealthModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
