@@ -35,7 +35,9 @@ import { UserModule } from './module/user/user.module';
           format: winston.format.combine(
             winston.format.cli(),
             winston.format.splat(),
-            winston.format.timestamp(),
+            winston.format.timestamp({
+              format: 'YYYY-MM-DD HH:mm:ss',
+            }),
             winston.format.printf(info => {
               return `${info.timestamp} ${info.level}: ${info.message}`;
             }),
@@ -100,7 +102,7 @@ import { UserModule } from './module/user/user.module';
         timezone: '+08:00', // 服务器上配置的时区
         synchronize: true, // 根据实体自动创建数据库表，生产环境建议关闭
         // entities: ['dist/**/*.entity{.ts, .d.ts, .js}'], // 数据表实体
-        autoLoadEntities: true,
+        autoLoadEntities: true, // 如果为 true，将自动加载实体 TypeOrmModule.forFeature() 方法注册的每个实体都将自动添加到配置对象的实体
       }),
     }),
     HealthModule,

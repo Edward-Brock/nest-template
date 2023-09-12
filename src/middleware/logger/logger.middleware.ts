@@ -12,7 +12,6 @@ export default class LoggerMiddleware implements NestMiddleware {
   ) {}
 
   use(req: Request, res: Response, next: NextFunction) {
-    console.log('→ 进入全局中间件');
     // 获取请求信息
     const {
       query,
@@ -23,6 +22,7 @@ export default class LoggerMiddleware implements NestMiddleware {
     } = req;
 
     // 记录日志
+    this.logger.info(`🧱 进入全局中间件 🧱`);
     this.logger.info(`route`, {
       req: getReqMainInfo(req),
     });

@@ -16,7 +16,6 @@ export default class UnifyExceptionFilter implements ExceptionFilter {
   ) {}
 
   catch(exception: HttpException, host: ArgumentsHost) {
-    console.log('※ Enter global exception filter');
     const ctx = host.switchToHttp(); // 获取当前执行上下文
     const res = ctx.getResponse<Response>(); // 获取响应对象
     const req = ctx.getRequest<Request>(); // 获取请求对象
@@ -38,6 +37,7 @@ export default class UnifyExceptionFilter implements ExceptionFilter {
     };
 
     // 记录日志（错误消息，错误码，请求信息等）
+    this.logger.error(`⚠️ 全局异常过滤器已捕获到异常 ⚠️`);
     this.logger.error(message, {
       status,
       req: getReqMainInfo(req),
