@@ -21,6 +21,7 @@ import { HealthModule } from './module/health/health.module';
 import { UserModule } from './module/user/user.module';
 import { AuthModule } from './module/auth/auth.module';
 import { JwtAuthGuard } from './module/auth/guard/jwt-auth.guard';
+import { RolesGuard } from './module/role/guard/roles.guard';
 
 @Module({
   imports: [
@@ -124,10 +125,15 @@ import { JwtAuthGuard } from './module/auth/guard/jwt-auth.guard';
       provide: APP_INTERCEPTOR,
       useClass: UnifyResponseInterceptor,
     },
-    // 启用全局身份验证
+    // 启用全局身份验证（Authentication）
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
+    },
+    // 启用全局授权认证（Authorization）
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
 })

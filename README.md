@@ -22,8 +22,9 @@ Nest Template 是在 Nest 框架基础上添加相关依赖及功能，扩展 Ne
 - 全局中间件、全局异常过滤器、全局响应拦截器
 - 速率限制（Rate limiting）
 - Swagger
-- 健康检查
-- 身份验证
+- 健康检查（Health checks）
+- 身份验证（Authentication）
+- 授权验证（Authorization）
 
 ## 安装
 
