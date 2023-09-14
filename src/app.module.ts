@@ -12,7 +12,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
 import 'winston-daily-rotate-file';
-import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import UnifyExceptionFilter from './middleware/filter/uinify-exception.filter';
 import { UnifyResponseInterceptor } from './middleware/interceptor/unify-response.interceptor';
 import logger from './middleware/logger/logger.middleware';
@@ -20,6 +20,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { HealthModule } from './module/health/health.module';
 import { UserModule } from './module/user/user.module';
 import { AuthModule } from './module/auth/auth.module';
+import { JwtAuthGuard } from './module/auth/guard/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -122,6 +123,11 @@ import { AuthModule } from './module/auth/auth.module';
     {
       provide: APP_INTERCEPTOR,
       useClass: UnifyResponseInterceptor,
+    },
+    // 启用全局身份验证
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
     },
   ],
 })

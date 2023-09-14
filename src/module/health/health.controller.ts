@@ -8,7 +8,9 @@ import {
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
 import { ApiTags } from '@nestjs/swagger';
+import { Public } from '../auth/decorator/skip-auth.decorator';
 
+@Public()
 @Controller('health')
 @ApiTags('health')
 export class HealthController {

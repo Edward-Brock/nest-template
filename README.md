@@ -23,6 +23,7 @@ Nest Template 是在 Nest 框架基础上添加相关依赖及功能，扩展 Ne
 - 速率限制（Rate limiting）
 - Swagger
 - 健康检查
+- 身份验证
 
 ## 安装
 
