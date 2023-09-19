@@ -5,6 +5,8 @@ import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 
+declare const module: any;
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // 解析 application/x-www-form-urlencoded
@@ -26,6 +28,12 @@ async function bootstrap() {
   // 动态获取 HTTP 服务端口
   const http_port = configService.get('SERVER_PORT');
   await app.listen(http_port);
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
+
   console.log(`
   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   HTTP 服务正在运行：http://localhost:${http_port}
