@@ -18,10 +18,9 @@ export class UnifyResponseInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const ctx = context.switchToHttp();
     const req = ctx.getRequest<Request>();
-    this.logger.info(`🔧 进入全局响应拦截器 🔧`);
     return next.handle().pipe(
       map(data => {
-        this.logger.info(`response`, {
+        this.logger.info(`ENTER GLOBAL RESPONSE INTERCEPTOR`, {
           responseData: data,
           req: getReqMainInfo(req),
         });

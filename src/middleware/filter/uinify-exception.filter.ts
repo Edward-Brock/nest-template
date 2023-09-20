@@ -40,12 +40,14 @@ export default class UnifyExceptionFilter implements ExceptionFilter {
     };
 
     // 记录日志（错误消息，错误码，请求信息等）
-    this.logger.error(`⚠️ 全局异常过滤器已捕获到异常 ⚠️`);
-    this.logger.error(message, {
-      httpStatus,
-      req: getReqMainInfo(req),
-      stack: exception['stack'],
-    });
+    this.logger.error(
+      `GLOBAL EXCEPTION FILTER HAS CAUGHT THE EXCEPTION: ${message}`,
+      {
+        httpStatus,
+        req: getReqMainInfo(req),
+        stack: exception['stack'],
+      },
+    );
 
     res
       .status(httpStatus >= 500 ? httpStatus : 200)

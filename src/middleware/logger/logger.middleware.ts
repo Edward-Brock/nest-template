@@ -22,8 +22,7 @@ export default class LoggerMiddleware implements NestMiddleware {
     } = req;
 
     // 记录日志
-    this.logger.info(`🧱 进入全局中间件 🧱`);
-    this.logger.info(`route`, {
+    this.logger.info(`ENTER GLOBAL MIDDLEWARE`, {
       req: getReqMainInfo(req),
     });
 

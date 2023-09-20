@@ -7,7 +7,7 @@ import {
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import envConfig from './config/envConfig';
+import envConfig from './config/env.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
@@ -75,6 +75,7 @@ import { RolesGuard } from './module/role/guard/roles.guard';
             winston.format.timestamp({
               format: 'YYYY-MM-DD HH:mm:ss',
             }),
+            winston.format.colorize(),
             winston.format.json(),
           ),
         }),
