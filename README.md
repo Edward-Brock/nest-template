@@ -11,7 +11,7 @@ Nest Template 是在 Nest 框架基础上添加相关依赖及功能，扩展 Ne
 ## 描述
 
 项目采用基于 [TypeScript](https://www.typescriptlang.org/) 语言入门的 [Nest](https://github.com/nestjs/nest)
-框架存储库，使用 [pnpm](https://pnpm.io/) 作为包管理工具。
+框架存储库，使用 [pnpm](https://pnpm.io/) 作为包管理工具，需要 [Node.js](https://nodejs.org/zh-cn) v16 或更高版本。
 
 ## 支持功能
 
