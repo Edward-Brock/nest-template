@@ -27,9 +27,12 @@ export default class UnifyExceptionFilter implements ExceptionFilter {
         ? exception.getStatus()
         : HttpStatus.INTERNAL_SERVER_ERROR;
     const message =
+      exception['response']?.['message']?.[0] ||
+      exception['response']?.['message'] ||
+      exception['response']?.['error'] ||
+      exception['message']?.['message'] ||
+      exception['message']?.['error'] ||
       exception['message'] ||
-      exception['message']['message'] ||
-      exception['message']['error'] ||
       null;
 
     const responseBody = {
